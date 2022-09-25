@@ -1,12 +1,36 @@
-//write include statement for decisions header
-#include "decisions.h"
-#include <string>
 #include <iostream>
 
-using std::cout;
-using std::cin;
-using std::string;
-//Write code for function(s) code here
+
+using namespace std;
+string get_letter_grade_using_if(int a);
+string get_letter_grade_using_switch(int b);
+
+int main()
+{
+    int marks;
+    string p;
+   
+    cout<<"Enter marks as a whole number>>";
+    cin>>marks;
+ 
+       if(marks<0 || marks>100){
+        cout<<"invalid marks\n";
+ 
+    }
+    else 
+    {
+          
+        p=get_letter_grade_using_switch(marks);
+            cout<<p <<" Grade generated using SWITCH";
+        
+    }
+    
+      
+    
+
+    return 0;
+}
+
 string get_letter_grade_using_if(int a){
     string k;
     if ( a>=90 ){
@@ -25,15 +49,12 @@ string get_letter_grade_using_if(int a){
         k="F";
     }
     else{
-        k="Invalid Grade";
+        k="Invalid marks";
     }
 
 
     return k;
 }
-
-
-
 string get_letter_grade_using_switch(int b){
     string str;
     switch(b/10) {
@@ -63,3 +84,5 @@ string get_letter_grade_using_switch(int b){
     }
     return str;
 }
+
+//end
