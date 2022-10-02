@@ -1,5 +1,10 @@
 //write include statements
+#include "dna.h"
+#include<iostream>
+#include<string>
 
+using std::cout;
+using std::cin;
 //write using statements
 
 
@@ -11,6 +16,22 @@ function and display the result. Program runs as long as
 user enters a y or Y.
 */
 int main() 
-{
+
+   { std::cout << "Main Menu\n"
+        << "-------------------\n"
+        << "1. Factoral\n"
+        << "2. Greatest Common Divisor\n"
+        << "3. Exit\n";
+        
+
+    
+    int choice;
+
+    do
+    
+        choice = true;
+    while    
+	(std::cout << "Enter choice: ");
+        std::cin >> choice;
 	return 0;
 }
