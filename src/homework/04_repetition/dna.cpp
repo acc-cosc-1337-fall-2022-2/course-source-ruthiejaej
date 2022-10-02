@@ -22,7 +22,7 @@ using std::cin;
 //}
 
 
-int main()
+int factoral()
 
 {
 int num;
