@@ -7,8 +7,30 @@ and display them to screen.
 Program continues until user decides to exit.
 
 */
+#include<iostream>
+#include<string>
+using std::cout;
+using std::cin;
+
 int main() 
 {
+int choice = 0;
+int choice{};
+cout <<"Main Menu: \n";
+cout <<	"1. Get GC Content \n";
+cout << "2. Get DNA Complement \n";
+cout << "3. Exit \n";
+cin >> choice;
+if (choice == 3)
+{
+    exit(0);
+}
 
-	return 0;
+do
+{
+cout << "What would you like to do:";
+cin >> choice;
+
+}while (choice >= 1 || choice <= 3);
+return 0; 
 }
