@@ -210,4 +210,25 @@ void tic_tac_toe::set_winner() {
 string tic_tac_toe::get_winner() {
 return winner;
 }
+ostream& operator<<(ostream& out, const tic_tac_toe& game)
+{
+    for(int i = 0; i<9; i++)
+    {
+        if(i == 0 || i == 1 || i == 3 || i == 4 || i == 6 || i == 7)
+        {out<<game.pegs[i]<<"|";}
+        if(i == 2 || i == 5 || i == 8)
+        {out<<game.pegs[i]<<"\n";}
+    }
 
+    return out;
+}
+istream& operator>>(istream& in, tic_tac_toe& game)
+{
+    int position;
+
+    cout << "Player " << game.get_player() << ", select a position 1-9";
+    in >> position;
+    game.mark_board(position);
+
+    return in;
+}

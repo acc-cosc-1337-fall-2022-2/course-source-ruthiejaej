@@ -1,4 +1,5 @@
 #include "tic_tac_toe.h"
+#include "tic_tac_toe_manager.h"
 #include <string>
 
 int main() 
@@ -36,4 +37,14 @@ int main()
     }
     while (start_game == "Y");
 	return false;
+     if(start_game == "N" || start_game == "n")
+     //   {
+      //      break;
+      //  }
+    //}
+    while(start_game != "N" || start_game != "n");
+
+    cout <<tic_tac_toe_manager();
+
+    return 0;
 }	

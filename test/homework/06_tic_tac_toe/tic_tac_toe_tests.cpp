@@ -55,7 +55,7 @@ TEST_CASE("Test game")
 
 }
 
-TEST_CASE("Test game")
+TEST_CASE("Test game1")
  {
    tic_tac_toe game;
    string first_player = "O";
@@ -90,3 +90,4 @@ TEST_CASE("Test game")
   REQUIRE(game.game_over() == true);
   REQUIRE(game.get_winner() == "O");
  }
+ 

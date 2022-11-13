@@ -1,10 +1,11 @@
 //h
-#ifndef TIC_TAC_TOR_H
-#define TIC_TAC_TOR_H
+#ifndef TIC_TAC_TOE_H
+#define TIC_TAC_TOE_H
 
 #include <string>
 #include <vector>
 #include <iostream>
+//#include <ostream>
 using namespace std;
 
 class tic_tac_toe
@@ -33,7 +34,8 @@ public:
     string get_player() const;
     void display_board() const;
     string get_winner();
-
+    friend std::ostream& operator<<(std::ostream& out, const tic_tac_toe& game);
+    friend std::istream& operator>>(std::istream& in, tic_tac_toe& game);
 };
 
 #endif
