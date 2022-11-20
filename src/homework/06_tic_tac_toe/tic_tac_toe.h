@@ -7,25 +7,33 @@
 #include <iostream>
 //#include <ostream>
 using namespace std;
+using std::vector;
+
 
 class tic_tac_toe
 {
     string player = "X";
     string winner;
-    vector<string> pegs = 
-    {
-     " "," "," ",
-     " "," "," ", 
-     " "," "," "
-    };
+    //vector<string> pegs; 
+   // {
+     //" "," "," ",
+     //" "," "," ", 
+     //" "," "," "
+   //};
 
     void set_next_player();
     bool check_board_full();
     void clear_board();
-    bool check_column_win();
-    bool check_row_win();
-    bool check_diagonal_win();
+   // bool check_column_win();
+   // bool check_row_win();
+   // bool check_diagonal_win();
     void set_winner();
+
+protected:
+    vector<string> pegs;
+    virtual bool check_column_win();
+    virtual bool check_row_win();
+    virtual bool check_diagonal_win();
 
 public:
     bool game_over();
@@ -34,6 +42,7 @@ public:
     string get_player() const;
     void display_board() const;
     string get_winner();
+    tic_tac_toe(int size);
     friend std::ostream& operator<<(std::ostream& out, const tic_tac_toe& game);
     friend std::istream& operator>>(std::istream& in, tic_tac_toe& game);
 };

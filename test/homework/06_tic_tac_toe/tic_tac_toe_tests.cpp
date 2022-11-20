@@ -2,294 +2,177 @@
 #include "catch.hpp"
 #include "tic_tac_toe.h"
 #include "tic_tac_toe_manager.h"
-TEST_CASE("Verify Test Configuration", "verification") {
-	REQUIRE(true == true);
-}
+#include "tic_tac_toe_3.h"
+#include "tic_tac_toe_4.h"
 
-TEST_CASE("First player  X")
+TEST_CASE("Test T.T.T Manager get winner")
 {
-	tic_tac_toe game;
-	game.start_game("X");
-	REQUIRE(game.get_player()=="X");
-}
-TEST_CASE("First player  O")
-{
-	tic_tac_toe game;
-	game.start_game("O");
-	REQUIRE(game.get_player()=="O");
-}
-TEST_CASE("Game over if 9 slots are selected")
-{
-	tic_tac_toe game; 
-	game.start_game("X");
-	game.mark_board(1);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(2);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(3);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(4);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(5);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(7);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(6);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(9);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(8);
-	REQUIRE(game.game_over()==true);
-	REQUIRE(game.get_winner()=="C");
-	
-}
-TEST_CASE("Test win by first column")
-{
-	tic_tac_toe game; 
-	game.start_game("X");
-	game.mark_board(1);//1 for x
-	REQUIRE(game.game_over()==false);
-	game.mark_board(2);//2 for o
-	REQUIRE(game.game_over()==false);
-	game.mark_board(4);//4 for x
-	REQUIRE(game.game_over()==false);
-	game.mark_board(5);//5 for o
-	REQUIRE(game.game_over()==false);
-	game.mark_board(7);//7 for x
-	REQUIRE(game.game_over()==true);
-	REQUIRE(game.get_winner()=="X");
-}
 
-TEST_CASE("Test win by second column")
-{
-	tic_tac_toe game; 
-	game.start_game("X");
-	game.mark_board(2);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(1);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(5);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(4);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(8);
-	REQUIRE(game.game_over()==true);
-	REQUIRE(game.get_winner()=="X");
-}
-
-TEST_CASE("Test win by third column")
-{
-	tic_tac_toe game; 
-	game.start_game("X");
-	game.mark_board(3);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(1);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(6);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(5);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(9);
-	REQUIRE(game.game_over()==true);
-	REQUIRE(game.get_winner()=="X");
-}
-TEST_CASE("Test win by first row")
-{
-	tic_tac_toe game; 
-	game.start_game("X");
-	game.mark_board(1);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(7);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(2);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(4);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(3);
-	REQUIRE(game.game_over()==true);
-	REQUIRE(game.get_winner()=="X");
-}
-TEST_CASE("Test win by second row")
-{
-	tic_tac_toe game; 
-	game.start_game("X");
-	game.mark_board(4);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(1);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(5);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(2);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(6);
-	REQUIRE(game.game_over()==true);
-	REQUIRE(game.get_winner()=="X");
-}
-TEST_CASE("Test win by third row")
-{
-	tic_tac_toe game; 
-	game.start_game("X");
-	game.mark_board(7);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(2);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(8);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(6);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(9);
-	REQUIRE(game.game_over()==true);
-	REQUIRE(game.get_winner()=="X");
-}
-
-TEST_CASE("Test win diagonally from top left")
-{
-	tic_tac_toe game; 
-	game.start_game("X");
-	game.mark_board(1);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(2);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(5);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(7);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(9);
-	REQUIRE(game.game_over()==true);
-	REQUIRE(game.get_winner()=="X");
-}
-
-TEST_CASE("Test win diagonally from bottom left")
-{
-	tic_tac_toe game; 
-	game.start_game("X");
-	game.mark_board(7);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(8);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(5);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(1);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(3);
-	REQUIRE(game.game_over()==true);
-	REQUIRE(game.get_winner()=="X");
-}
-
-TEST_CASE("Test tic_tac_toe manager get winner total function")
-{
-	tic_tac_toe game; // tie game
+	unique_ptr<tic_tac_toe> game = make_unique<tic_tac_toe_3>();
+	unique_ptr<tic_tac_toe> game1 = make_unique<tic_tac_toe_4>();
 	tic_tac_toe_manager manager;
-	game.start_game("X");
-	game.mark_board(1);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(2);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(3);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(4);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(5);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(7);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(6);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(9);
-	REQUIRE(game.game_over()==false);
-	game.mark_board(8);
-	REQUIRE(game.game_over()==true);
-	REQUIRE(game.get_winner()=="C");//require c for "call it a tie". this set of potitions is a tie.
+	
+	game->start_game("X");
+	game->mark_board(3);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(1);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(6);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(2);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(9);
+
+	REQUIRE(game->game_over()==true);
 	manager.save_game(game);
 
-	tic_tac_toe game1; // x win 1
-	game1.start_game("X");
-	game1.mark_board(1);//1 for x
-	REQUIRE(game1.game_over()==false);
-	game1.mark_board(2);//2 for o
-	REQUIRE(game1.game_over()==false);
-	game1.mark_board(4);//4 for x
-	REQUIRE(game1.game_over()==false);
-	game1.mark_board(5);//5 for o
-	REQUIRE(game1.game_over()==false);
-	game1.mark_board(7);//7 for x
-	REQUIRE(game1.game_over()==true);
-	REQUIRE(game1.get_winner()=="X");
+
+	game1->start_game("X");
+
+	game1->mark_board(3);
+	REQUIRE(game1->game_over()==false);
+	game1->mark_board(1);
+	REQUIRE(game1->game_over()==false);
+	game1->mark_board(6);
+	REQUIRE(game1->game_over()==false);
+	game1->mark_board(2);
+	REQUIRE(game1->game_over()==false);
+	game1->mark_board(9);
+
+	REQUIRE(game1->game_over()==true);
 	manager.save_game(game1);
 
+	game->start_game("O");
 
-	tic_tac_toe game2; // o first win
-	game2.start_game("O");
-	game2.mark_board(1);//1 for o
-	REQUIRE(game2.game_over()==false);
-	game2.mark_board(2);//2 for x
-	REQUIRE(game2.game_over()==false);
-	game2.mark_board(4);//4 for o
-	REQUIRE(game2.game_over()==false);
-	game2.mark_board(5);//5 for x
-	REQUIRE(game2.game_over()==false);
-	game2.mark_board(7);//7 for o
-	REQUIRE(game2.game_over()==true);
-	REQUIRE(game2.get_winner()=="O");
+	game->mark_board(1);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(4);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(5);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(3);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(9);
+
+	REQUIRE(game->game_over()==true);
+	manager.save_game(game);
+
+	game->start_game("X");
+
+	game->mark_board(1);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(2);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(3);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(4);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(5);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(7);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(6);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(9);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(8);
+	unique_ptr<tic_tac_toe> game2 = make_unique<tic_tac_toe_3>();
+
+	game2->start_game("O");
+
+	game2->mark_board(1);
+	REQUIRE(game2->game_over()==false);
+	game2->mark_board(4);
+	REQUIRE(game2->game_over()==false);
+	game2->mark_board(5);
+	REQUIRE(game2->game_over()==false);
+	game2->mark_board(3);
+	REQUIRE(game2->game_over()==false);
+	game2->mark_board(9);
+
+	REQUIRE(game2->game_over()==true);
 	manager.save_game(game2);
 
+	unique_ptr<tic_tac_toe> game3 = make_unique<tic_tac_toe_3>();
 
-	tic_tac_toe game3; //o second win
-	game3.start_game("O");
-	game3.mark_board(1);//1 for o
-	REQUIRE(game3.game_over()==false);
-	game3.mark_board(2);//2 for x
-	REQUIRE(game3.game_over()==false);
-	game3.mark_board(4);//4 for o
-	REQUIRE(game3.game_over()==false);
-	game3.mark_board(5);//5 for x
-	REQUIRE(game3.game_over()==false);
-	game3.mark_board(7);//7 for o
-	REQUIRE(game3.game_over()==true);
-	REQUIRE(game3.get_winner()=="O");
+	game3->start_game("X");
+
+	game3->mark_board(1);
+	REQUIRE(game3->game_over()==false);
+	game3->mark_board(2);
+	REQUIRE(game3->game_over()==false);
+	game3->mark_board(3);
+	REQUIRE(game3->game_over()==false);
+	game3->mark_board(4);
+	REQUIRE(game3->game_over()==false);
+	game3->mark_board(5);
+	REQUIRE(game3->game_over()==false);
+	game3->mark_board(7);
+	REQUIRE(game3->game_over()==false);
+	game3->mark_board(6);
+	REQUIRE(game3->game_over()==false);
+	game3->mark_board(9);
+	REQUIRE(game3->game_over()==false);
+	game3->mark_board(8);
+
+
+	REQUIRE(game->game_over()==true);
+	manager.save_game(game);
+	REQUIRE(game3->game_over()==true);
 	manager.save_game(game3);
+	int x = 0;
+	int o = 0;
+	int t = 0;
+
+	REQUIRE(o==1);
+	REQUIRE(t==1);
+}
+
+TEST_CASE("Test first column winner for TT4")
+{
+	unique_ptr<tic_tac_toe> game = make_unique<tic_tac_toe_4>();
+
+	game->mark_board(1);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(4);
+	game->mark_board(5);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(2);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(5);
+	game->mark_board(6);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(3);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(6);
+	game->mark_board(7);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(4);
+}
 
 
-		tic_tac_toe game4; //o third win
-	game4.start_game("O");
-	game4.mark_board(1);//1 for o
-	REQUIRE(game4.game_over()==false);
-	game4.mark_board(2);//2 for x
-	REQUIRE(game4.game_over()==false);
-	game4.mark_board(4);//4 for o
-	REQUIRE(game4.game_over()==false);
-	game4.mark_board(5);//5 for x
-	REQUIRE(game4.game_over()==false);
-	game4.mark_board(7);//7 for o
-	REQUIRE(game4.game_over()==true);
-	REQUIRE(game4.get_winner()=="O");
-	manager.save_game(game4);
 
+TEST_CASE("Test bottom left diagonal winner 4")
 
-
+{
+	//unique_ptr<tic_tac_toe> game = make_unique<tic_tac_toe_3>();
+	unique_ptr<tic_tac_toe> game = make_unique<tic_tac_toe_4>();
 	
-		tic_tac_toe game5; //x second win
-	game5.start_game("X");
-	game5.mark_board(1);//1 for x
-	REQUIRE(game5.game_over()==false);
-	game5.mark_board(2);//2 for o
-	REQUIRE(game5.game_over()==false);
-	game5.mark_board(4);//4 for x
-	REQUIRE(game5.game_over()==false);
-	game5.mark_board(5);//5 for o
-	REQUIRE(game5.game_over()==false);
-	game5.mark_board(7);//7 for x
-	REQUIRE(game5.game_over()==true);
-	REQUIRE(game5.get_winner()=="X");
-	manager.save_game(game5);
+	game->start_game("X");
 
-// 6 games played(0-5). 1 tie, 2 wins for X, 3 wins for O. 
-
-	int x_win;
-	int o_win;
-	int ties;
-	manager.get_winner_total( o_win,x_win,ties);
-	REQUIRE(x_win==2);//let x win 2 time 
-	REQUIRE(o_win==3); // let o win 3 time to differentiate tallies.
-	REQUIRE(ties==1);//tie once
+	game->mark_board(4);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(1);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(7);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(2);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(10);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(3);
+	REQUIRE(game->game_over()==false);
+	game->mark_board(13);
+	REQUIRE(game->game_over()==true);
+	REQUIRE(game->get_winner() == "X");
 }

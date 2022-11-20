@@ -1,8 +1,26 @@
 //cpp
 #include "tic_tac_toe.h"
 #include <string>
-using namespace std;
+#include <iostream>
+#include <vector>
+#include <iomanip>
 
+using namespace std;
+using std::string;
+using std::vector;
+using std::cout;
+using std::cin;
+
+tic_tac_toe::tic_tac_toe(int size){
+int length = size * 2;
+for (int i = 0; i < length; i++)
+    {
+        
+        pegs.push_back(" ");
+        
+    } 
+        
+}
 
 void tic_tac_toe::set_next_player()
 {
@@ -24,7 +42,7 @@ bool tic_tac_toe::check_board_full()
 
 void tic_tac_toe::clear_board()
 {
-    for (int i = 0; i < 9; i++)
+    for (int i = 0; i < pegs.size(); i++)
     {
         
         pegs[i]= " ";

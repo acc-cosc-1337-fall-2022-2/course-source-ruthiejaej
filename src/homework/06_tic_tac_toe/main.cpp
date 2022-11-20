@@ -1,50 +1,94 @@
 #include "tic_tac_toe.h"
 #include "tic_tac_toe_manager.h"
+#include "tic_tac_toe_3.h"
+#include "tic_tac_toe_4.h"
 #include <string>
+#include <iostream>
+#include <memory>
+#include <vector>
+using namespace std;
+using std::unique_ptr;
+using std::make_unique;
+using std::cin;
+
+unique_ptr<tic_tac_toe> game;
+tic_tac_toe_manager manager;
 
 int main() 
 {
-    tic_tac_toe game;
+
     string first_player;
     int position;
-    string start_game;
-    do 
-	{
-        cout << "Which player are you? (X/O): ";
-        cin >> first_player;
-        game.start_game(first_player);
+    int select = 0;
+
+    while (select == 0)
+    {
+        string game_choice = "";
+        do
+        {
+            cout << "Would you like to play 3 in a row or 4 in a row? Pick either 3 or 4 :\n";
+            cin >> game_choice;
+        }
+        while(game_choice == "3" &&game_choice == "4");
+
+        if (game_choice == "3")
+        {
+            game = make_unique<tic_tac_toe_3>();
+            game = make_unique <tic_tac_toe_4>();
+        }
+        {
+            return true;
+        }
+        if (game_choice == "4")
+        {
+          game = make_unique<tic_tac_toe_4>(); 
+          cin>>game_choice;
+        }
+        {
+            return true;
+        }
     
 
-        while (!game.game_over())
-	    {
-            game.display_board();
+        cout << " Choose X or O\n";
+        cin >> first_player;
 
-            cout << "Enter position 1-9:";
-            cin >> position;
+        if (first_player == "X" || first_player == "O")
+        {
+            game->start_game(first_player);
 
-            game.mark_board(position - 1);
-        
-        
+            do
+            {
+                cout << *game;
+                cin >> *game;
+            }
+            while (!game->game_over());
+
+            manager.save_game(game);
+
+            int x, o, t;
+            manager.get_winner_total(x,o,t);
+            cout << "\nX Wins: " << x << "\n";
+            cout << "O Wins: " << o << "\n";
+            cout << "Tie: " << t << "\n";
+
+            cout << "Play again? Winning is futile! \n";
+            cin >> select;
         }
-
-
-
-        cout << game.get_winner() << " WINS!" << endl;
-
-
-        cout << "Play again? Winning is futile. (Y/N): ";
-        cin >> start_game;
+        else
+        {
+            cout << "Invalid \n";
+        }
     }
-    while (start_game == "Y");
-	return false;
-     if(start_game == "N" || start_game == "n")
-     //   {
-      //      break;
-      //  }
-    //}
-    while(start_game != "N" || start_game != "n");
+    while (select != 0)
+    {
+        cout<<"Goodbye"<<"\n\n";
+        break;
+    }
+    cout<<manager;
+	return 0;
+} 
 
-    cout <<tic_tac_toe_manager();
-
-    return 0;
-}	
+    
+    
+   
+	
