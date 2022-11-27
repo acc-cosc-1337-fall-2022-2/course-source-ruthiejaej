@@ -14,12 +14,12 @@ class tic_tac_toe
 {
     string player = "X";
     string winner;
-    //vector<string> pegs; 
-   // {
-     //" "," "," ",
-     //" "," "," ", 
-     //" "," "," "
-   //};
+   /* vector<string> get_pegs; 
+   {
+    " "," "," ",
+    " "," "," ", 
+    " "," "," "
+   };*/
 
     void set_next_player();
     bool check_board_full();
@@ -42,7 +42,10 @@ public:
     string get_player() const;
     void display_board() const;
     string get_winner();
-    tic_tac_toe(int size);
+    tic_tac_toe (int board_size, vector<string> b, string win):pegs(b) {
+    winner = win;
+    }
+    vector<string> get_pegs() const;
     friend std::ostream& operator<<(std::ostream& out, const tic_tac_toe& game);
     friend std::istream& operator>>(std::istream& in, tic_tac_toe& game);
 };

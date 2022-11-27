@@ -10,83 +10,76 @@ using namespace std;
 using std::unique_ptr;
 using std::make_unique;
 using std::cin;
+using std::vector;
 
-unique_ptr<tic_tac_toe> game;
-tic_tac_toe_manager manager;
+//unique_ptr<tic_tac_toe> game;
+//tic_tac_toe_manager manager;
 
 int main() 
-{
+{	
+	unique_ptr<tic_tac_toe> game;
+	tic_tac_toe_data data;
+	string starting_player;
+	bool loop_again;
+	tic_tac_toe_manager manager(data);
+	int size;
+	int X_wins;
+	int O_wins;
+	int Tie;
 
-    string first_player;
-    int position;
-    int select = 0;
+	do {
+		do {
+			cout << "Do you want to play with a board of size 3 or 4 (enter 3 or 4): ";
+			cin >> size;
+			
+			if (size == 3) {
+				vector<string> board(9, " ");
+				game = make_unique <tic_tac_toe_3>(board, "");
+			} else if (size == 4) {
+				vector<string> board(16, " ");
+				game = make_unique <tic_tac_toe_4>(board, "");
+			} else {
+				cout << "Invalid size" << "\n";
+			}
 
-    while (select == 0)
-    {
-        string game_choice = "";
-        do
-        {
-            cout << "Would you like to play 3 in a row or 4 in a row? Pick either 3 or 4 :\n";
-            cin >> game_choice;
-        }
-        while(game_choice == "3" &&game_choice == "4");
+		} while(size != 3 && size != 4);
 
-        if (game_choice == "3")
-        {
-            game = make_unique<tic_tac_toe_3>();
-            game = make_unique <tic_tac_toe_4>();
-        }
-        {
-            return true;
-        }
-        if (game_choice == "4")
-        {
-          game = make_unique<tic_tac_toe_4>(); 
-          cin>>game_choice;
-        }
-        {
-            return true;
-        }
-    
 
-        cout << " Choose X or O\n";
-        cin >> first_player;
+		cout << "Enter X or O: ";
+		cin >> starting_player;
 
-        if (first_player == "X" || first_player == "O")
-        {
-            game->start_game(first_player);
+		while (starting_player != "X" && starting_player != "O") {
+			cout << "Try again" << "\n";
+			cout << "Enter X or O: ";
+			cin >> starting_player;
+		}
 
-            do
-            {
-                cout << *game;
-                cin >> *game;
-            }
-            while (!game->game_over());
+		game->start_game(starting_player);
 
-            manager.save_game(game);
+		do {
+			cout << *game;
+			cin >> *game;
 
-            int x, o, t;
-            manager.get_winner_total(x,o,t);
-            cout << "\nX Wins: " << x << "\n";
-            cout << "O Wins: " << o << "\n";
-            cout << "Tie: " << t << "\n";
+		} while(game->game_over() == false);
+		cout << *game;
 
-            cout << "Play again? Winning is futile! \n";
-            cin >> select;
-        }
-        else
-        {
-            cout << "Invalid \n";
-        }
-    }
-    while (select != 0)
-    {
-        cout<<"Goodbye"<<"\n\n";
-        break;
-    }
-    cout<<manager;
+		cout << "The winner is " << game->get_winner() << "\n";
+		manager.save_game(game);
+		manager.get_winner_total(O_wins, X_wins, Tie);
+		cout << "X has won " << X_wins << " times O has won " << O_wins << " times and  " << Tie << " ties" << "\n";
+
+		cout << "Want to play again? Winning is futile! (1 for yes 0 for no): ";
+		cin >> loop_again;
+
+	} while (loop_again);
+
+	cout << "\n" << "ALL GAMES PLAYED " << "\n";
+	cout << manager;
+
 	return 0;
 } 
+
+
 
     
     

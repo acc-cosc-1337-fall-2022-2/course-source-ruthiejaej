@@ -9,6 +9,8 @@ using std::string;
 using std::vector;
 using std::cout;
 using std::cin;
+using std::unique_ptr;
+using std::move;
 
 
 
@@ -55,4 +57,11 @@ void tic_tac_toe_manager::update_winner_count(string winner)
     {
         Tie += 1;
     }
+}
+tic_tac_toe_manager::tic_tac_toe_manager(tic_tac_toe_data& d):data(d) {
+    game = move(data.get_game());    
+}
+
+tic_tac_toe_manager::~tic_tac_toe_manager() {
+    data.save_game(game);
 }

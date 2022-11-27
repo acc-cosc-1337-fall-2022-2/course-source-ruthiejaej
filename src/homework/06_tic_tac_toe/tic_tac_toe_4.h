@@ -16,7 +16,8 @@ bool check_diagonal_win();
 bool check_row_win();
    
 public:
-    tic_tac_toe_4():tic_tac_toe(4){}
+    tic_tac_toe_4();//:tic_tac_toe_4(4){}
+    tic_tac_toe_4(vector<string> p, string winner) : tic_tac_toe(4, p, winner){}
 };
 
 #endif

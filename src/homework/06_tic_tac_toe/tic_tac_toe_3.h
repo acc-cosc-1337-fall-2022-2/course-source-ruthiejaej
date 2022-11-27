@@ -12,12 +12,13 @@ class tic_tac_toe_3 : public tic_tac_toe {
    
 private:
         bool check_column_win();
-        bool check_diagonal_win();
-        bool check_row_win();
+        virtual bool check_diagonal_win();
+        virtual bool check_row_win();
    
 public:
         //unique_pointer<tic_tac_toe> game1= make_unique<tic_tac_toe_3>()
-        tic_tac_toe_3():tic_tac_toe(3){}
+        tic_tac_toe_3();//:tic_tac_toe_3(3){}
+        tic_tac_toe_3(vector<string> p, string winner) : tic_tac_toe(3, p, winner){}
 };
 
 #endif

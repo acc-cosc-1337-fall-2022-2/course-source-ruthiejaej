@@ -10,8 +10,8 @@ using std::string;
 using std::vector;
 using std::cout;
 using std::cin;
-
-tic_tac_toe::tic_tac_toe(int size){
+/*
+tic_tac_toe() {
 int length = size * 2;
 for (int i = 0; i < length; i++)
     {
@@ -20,7 +20,7 @@ for (int i = 0; i < length; i++)
         
     } 
         
-}
+}*/
 
 void tic_tac_toe::set_next_player()
 {
@@ -230,15 +230,22 @@ return winner;
 }
 ostream& operator<<(ostream& out, const tic_tac_toe& game)
 {
-    for(int i = 0; i<9; i++)
-    {
-        if(i == 0 || i == 1 || i == 3 || i == 4 || i == 6 || i == 7)
-        {out<<game.pegs[i]<<"|";}
-        if(i == 2 || i == 5 || i == 8)
-        {out<<game.pegs[i]<<"\n";}
+    string output = "";
+
+    if (game.pegs.size() == 9) {
+        output =("\033[4m" + game.pegs.at(0) + "|" + game.pegs.at(1) + "|" + game.pegs.at(2) + "\n" +
+                             game.pegs.at(3) + "|" + game.pegs.at(4) + "|" + game.pegs.at(5) + "\033[0m" + "\n" + 
+                             game.pegs.at(6) + "|" + game.pegs.at(7) + "|" + game.pegs.at(8) + "\n");
+    } else if (game.pegs.size() == 16) {
+        output =("\033[4m" + game.pegs.at(0) + "|" + game.pegs.at(1) + "|" + game.pegs.at(2) + "|"  + game.pegs.at(3) + "\n" +
+                             game.pegs.at(4) + "|" + game.pegs.at(5) + "|" + game.pegs.at(6) + "|"  + game.pegs.at(7) + "\n" +
+                             game.pegs.at(8) + "|" + game.pegs.at(9) + "|" + game.pegs.at(10) + "|"  + game.pegs.at(11) + "\033[0m" + "\n" + 
+                             game.pegs.at(12) + "|" + game.pegs.at(13) + "|" + game.pegs.at(14) + "|"  + game.pegs.at(15) + "\n");
     }
+    out << output;
 
     return out;
+   
 }
 istream& operator>>(istream& in, tic_tac_toe& game)
 {
@@ -250,3 +257,4 @@ istream& operator>>(istream& in, tic_tac_toe& game)
 
     return in;
 }
+
