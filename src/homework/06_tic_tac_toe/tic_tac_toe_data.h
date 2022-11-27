@@ -12,7 +12,7 @@
         public:
             void save_game(const vector<unique_ptr<tic_tac_toe>>& game);
             vector<unique_ptr<tic_tac_toe>> get_game();
-            bool get_pegs();
+            
         private:
             string file_name = "savedgame.dat";
 

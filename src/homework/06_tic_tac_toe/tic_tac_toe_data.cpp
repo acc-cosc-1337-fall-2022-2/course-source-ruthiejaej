@@ -22,10 +22,10 @@ void tic_tac_toe_data::save_game(const vector<unique_ptr<tic_tac_toe>>& game)  {
     
     for(auto i = 0; i < game.size(); i++ ) {
 
-        get_pegs();
-        for(auto j = 0; j < game.at(i)-> get_pegs().size(); j++ ) {
+        
+        for(auto j = 0; j < game.at(i)-> tic_tac_toe::get_pegs().size(); j++ ) {
             
-            saved_game << game.at(i)-> get_pegs().at(j); 
+            saved_game << game.at(i)-> tic_tac_toe::get_pegs().at(j); 
 
         }
         saved_game << game.at(i)->get_winner();
