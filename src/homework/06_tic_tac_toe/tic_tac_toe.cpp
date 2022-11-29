@@ -252,7 +252,7 @@ istream& operator>>(istream& in, tic_tac_toe& game)
     int position;
 
     cout << "Player " << game.get_player() << ", select a position 1-9";
-    in >> position;
+    cin >> position;
     game.mark_board(position);
 
     return in;

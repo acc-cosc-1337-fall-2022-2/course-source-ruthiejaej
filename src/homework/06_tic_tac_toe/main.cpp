@@ -20,7 +20,7 @@ int main()
 	unique_ptr<tic_tac_toe> game;
 	tic_tac_toe_data data;
 	string starting_player;
-	bool loop_again;
+	bool X, Y;
 	tic_tac_toe_manager manager(data);
 	int size;
 	int X_wins;
@@ -68,10 +68,10 @@ int main()
 		manager.get_winner_total(O_wins, X_wins, Tie);
 		cout << "X has won " << X_wins << " times O has won " << O_wins << " times and  " << Tie << " ties" << "\n";
 
-		cout << "Want to play again? Winning is futile! (1 for yes 0 for no): ";
-		cin >> loop_again;
+		cout << "Want to play again? Winning is futile! (Y for yes N for no): ";
+		cin >> X, Y;
 
-	} while (loop_again);
+	} while (X, Y);
 
 	cout << "\n" << "ALL GAMES PLAYED " << "\n";
 	cout << manager;
