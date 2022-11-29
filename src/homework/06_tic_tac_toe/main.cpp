@@ -45,12 +45,12 @@ int main()
 		} while(size != 3 && size != 4);
 
 
-		cout << "Enter X or O: ";
+		cout << "Enter X or O:(uppercase format only) ";
 		cin >> starting_player;
 
 		while (starting_player != "X" && starting_player != "O") {
-			cout << "Try again" << "\n";
-			cout << "Enter X or O: ";
+			cout << "Try again? (uppercase format only)" << "\n";
+			cout << "Enter X or O: (uppercase format only) ";
 			cin >> starting_player;
 		}
 

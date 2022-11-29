@@ -45,7 +45,7 @@ public:
     tic_tac_toe (int board_size, vector<string> b, string win):pegs(b) {
     winner = win;
     }
-    vector<string> get_pegs() const;
+    vector<string> get_pegs() const{return pegs;}
     friend std::ostream& operator<<(std::ostream& out, const tic_tac_toe& game);
     friend std::istream& operator>>(std::istream& in, tic_tac_toe& game);
 };
