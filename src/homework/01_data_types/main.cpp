@@ -14,15 +14,15 @@ int main ()
 
 {
 	int num = 0;
-	cout<<"Enter a number: ";
+	cout<<"Pick a number, any number: ";
 	cin>>num;
 
 	int result = multiply_numbers(num);
-	cout<<"The result is "<<result<<"\n";
+	cout<<"The answer is: "<<result<<"\n";
 
 	int num1 = 4;
 	result = multiply_numbers(num1);
-	cout<<"The new result is "<<result<<"\n";
+	cout<<"The second answer is: "<<result<<"\n";
 
 	return 0;
 }
