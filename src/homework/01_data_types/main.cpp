@@ -1,6 +1,6 @@
 //write include statements
 #include <iostream>
-#include "data_types.cpp"
+#include "data_types.h"
 
 //write namespace using statement for cout
 using std::cout;
@@ -8,21 +8,21 @@ using std::cin;
 /*
 Call multiply_numbers with 10 and 10 parameter values and display function result
 */
-int main()
+
+
+int main ()
+
 {
-	int result;
-	result = multiply_numbers(10);
-	std::cout << result;
+	int num = 0;
+	cout<<"Enter a number: ";
+	cin>>num;
+
+	int result = multiply_numbers(num);
+	cout<<"The result is "<<result<<"\n";
+
+	int num1 = 4;
+	result = multiply_numbers(num1);
+	cout<<"The new result is "<<result<<"\n";
 
 	return 0;
 }
-int main ()
-{
-	int num, num1;
-	int num = num;
-	int num1 = 4;
-    cout << "Pick a number any number";
-	cin >> num;
-	int result = num * num1;
-	return 0;
-	}
